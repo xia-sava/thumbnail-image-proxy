@@ -1,0 +1,12 @@
+{
+    "name": "xia-sava/thumbnail-image-proxy",
+    "license": "proprietary",
+    "type": "project",
+    "authors": [
+        {
+            "name": "ISIGE, Akira",
+            "email": "xia@silvia.com"
+        }
+    ],
+    "require": {}
+}
