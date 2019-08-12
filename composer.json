@@ -8,5 +8,16 @@
             "email": "xia@silvia.com"
         }
     ],
-    "require": {}
+    "require": {
+        "fabpot/goutte": "^3.2.3",
+        "composer/ca-bundle": "^1.2.3"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "ThumbnailImageProxy\\" : "src/ThumbnailImageProxy/"
+        }
+    }
 }
