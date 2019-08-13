@@ -5,6 +5,7 @@ namespace ThumbnailImageProxy\Site;
 use Composer\CaBundle\CaBundle;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
+use Psr\Http\Message\ResponseInterface;
 
 trait HttpTrait
 {
@@ -26,8 +27,8 @@ trait HttpTrait
         return $this->guzzleClient;
     }
 
-    public function redirectTo(string $uri): void
+    public function passthru(string $uri): ResponseInterface
     {
-        header("Location: $uri");
+        return $this->getGuzzleClient()->get($uri);
     }
 }

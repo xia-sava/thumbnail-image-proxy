@@ -4,6 +4,8 @@
 namespace ThumbnailImageProxy\Site;
 
 
+use Psr\Http\Message\ResponseInterface;
+
 abstract class SiteInterface
 {
     /**
@@ -21,7 +23,7 @@ abstract class SiteInterface
     }
 
     /**
-     * @return void
+     * @return ResponseInterface
      */
-    abstract public function process(): void;
+    abstract public function process(): ResponseInterface;
 }

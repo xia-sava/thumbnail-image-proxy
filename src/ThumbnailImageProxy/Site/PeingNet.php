@@ -3,12 +3,14 @@
 namespace ThumbnailImageProxy\Site;
 
 
+use Psr\Http\Message\ResponseInterface;
+
 class PeingNet extends SiteInterface
 {
     use HttpTrait;
     use HtmlFetchTrait;
 
-    public function process(): void
+    public function process(): ResponseInterface
     {
         $html = $this->fetchHtml($this->targetUri);
         $imageUri =
@@ -16,6 +18,6 @@ class PeingNet extends SiteInterface
                 ->first()
                 ->attr('src');
 
-        $this->redirectTo($imageUri);
+        return $this->passthru($imageUri);
     }
 }

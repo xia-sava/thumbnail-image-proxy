@@ -3,6 +3,8 @@
 namespace ThumbnailImageProxy;
 
 
+use Psr\Http\Message\ResponseInterface;
+
 class Runner
 {
     /**
@@ -22,8 +24,18 @@ class Runner
         if ($site !== '') {
             /** @var Site\SiteInterface $siteProc */
             $siteProc = new $site($targetUri);
-            $siteProc->process();
+            $response = $siteProc->process();
+            $this->response($response);
         }
+    }
+
+    /**
+     * @param ResponseInterface $response
+     */
+    public function response(ResponseInterface $response): void
+    {
+        header("Content-Type: {$response->getHeaderLine('content-type')}");
+        print $response->getBody()->getContents();
     }
 
     /**
