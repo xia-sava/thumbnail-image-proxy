@@ -34,7 +34,17 @@ class Runner
      */
     public function response(ResponseInterface $response): void
     {
-        header("Content-Type: {$response->getHeaderLine('content-type')}");
+        $headers = [
+            'content-type',
+            'location',
+        ];
+        foreach ($headers as $header) {
+            $value = $response->getHeaderLine($header);
+            if ($value !== '') {
+                header("{$header}: {$value}");
+            }
+        }
+        header("Status: {$response->getStatusCode()}");
         print $response->getBody()->getContents();
     }
 

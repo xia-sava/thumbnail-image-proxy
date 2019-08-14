@@ -18,6 +18,6 @@ class PeingNet extends SiteInterface
                 ->first()
                 ->attr('src');
 
-        return $this->passthru($imageUri);
+        return $this->redirect($imageUri);
     }
 }
